@@ -1,1 +1,3 @@
-let age: number = 31;
+let numbers: number[] = [];
+
+numbers.forEach((n) => n.toFixed(2));
