@@ -1,3 +1,5 @@
-let numbers: number[] = [];
+// tuple
+let user: [number, string] = [1, "Ceci"];
 
-numbers.forEach((n) => n.toFixed(2));
+// one of the bugs on typescript
+user.push(1);
