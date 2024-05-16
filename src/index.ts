@@ -1,15 +1,9 @@
-// object
-let employee: {
-  readonly id: number;
-  name: string;
-  retire: (date: Date) => void;
-} = {
-  id: 1,
-  name: "Ceci",
-  retire: (date: Date) => {
-    console.log(date);
-  },
-};
+// Exercise: think what would typescript infer without using it
 
-// typescript compiler prevent us from accesing the id property
-// employee.id = 0;
+let a = 100; // number
+let b = "Coffee"; // string
+let c = [true, false, false]; // boolean[]
+let d = { age: 31 }; // { age: number }
+let e = [3]; // number[]
+let f; // any
+let g = []; // any[]
