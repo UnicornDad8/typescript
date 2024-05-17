@@ -1,6 +1,7 @@
-// Literal types
-type Quantity = 50 | 100;
+// Nullable types
+function greet(name: string | null) {
+  if (name) console.log(name.toUpperCase());
+  else console.log("Hola");
+}
 
-let quantity: Quantity = 100;
-
-type Metric = "cm" | "inch";
+greet(null);
