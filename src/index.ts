@@ -1,9 +1,14 @@
-// Exercise: think what would typescript infer without using it
+// type aliases
+type Employee = {
+  readonly id: number;
+  name: string;
+  retire: (date: Date) => void;
+};
 
-let a = 100; // number
-let b = "Coffee"; // string
-let c = [true, false, false]; // boolean[]
-let d = { age: 31 }; // { age: number }
-let e = [3]; // number[]
-let f; // any
-let g = []; // any[]
+let employee: Employee = {
+  id: 1,
+  name: "Ceci",
+  retire: (date: Date) => {
+    console.log(date);
+  },
+};
