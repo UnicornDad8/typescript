@@ -1,7 +1,6 @@
-// Nullish coaelscing operator
-let speed: number | null = null;
+// Type assertions
+// let phone = document.getElementById("phone") as HTMLInputElement;
+let phone = <HTMLInputElement>document.getElementById("phone");
 
-let ride = {
-  // if speed is not null or undefined takes speed value, else 30
-  speed: speed ?? 30,
-};
+// now intellisense works
+phone.value;
