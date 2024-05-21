@@ -16,3 +16,12 @@ class Account {
     this.balance += amount;
   }
 }
+
+let account = new Account(1, "Ceci", 0);
+
+account.deposit(100);
+console.log(account instanceof Account);
+
+// for Narrowing primitive types we use => typeof
+// for Narrowing objects we use => instanceof
+if (account instanceof Account) console.log(account);
