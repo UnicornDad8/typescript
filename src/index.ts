@@ -1,8 +1,9 @@
 // classes are blueprints of objects
 class Account {
-  id: number;
+  readonly id: number;
   owner: string;
   balance: number;
+  nickname?: string;
 
   constructor(id: number, owner: string, balance: number) {
     this.id = id;
@@ -20,8 +21,4 @@ class Account {
 let account = new Account(1, "Ceci", 0);
 
 account.deposit(100);
-console.log(account instanceof Account);
-
-// for Narrowing primitive types we use => typeof
-// for Narrowing objects we use => instanceof
-if (account instanceof Account) console.log(account);
+console.log(account);
