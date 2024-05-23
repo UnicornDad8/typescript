@@ -1,24 +1,16 @@
-// Generic Interfaces
-
-// http://mywebsite.com/users
-// http://mywebsite.com/products
-
-interface Result<T> {
-  data: T | null;
-  error: string | null;
+// Generic Constraints
+class Person {
+  constructor(public name: string) {}
 }
 
-function fetch<T>(url: string): Result<T> {
-  return { data: null, error: null };
+class Customer extends Person {}
+
+// here we extend from Person class
+function echo<T extends Person>(value: T): T {
+  return value;
 }
 
-interface User {
-  username: string;
-}
+console.log(echo(new Person("Ceci")));
 
-interface Product {
-  title: string;
-}
-
-let result = fetch<Product>("http://mywebsite.com/users");
-console.log(result.data?.title);
+// here we can use a child from the Person class
+console.log(echo(new Customer("Mosh")));
