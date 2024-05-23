@@ -1,29 +1,27 @@
-// The "keyof" operator
+// Type mapping
 interface Product {
   name: string;
   price: number;
 }
+// Index signature
+// keyof
+// this way we can make all keys of Product readonly in one go
+type ReadOnly<T> = {
+  readonly [K in keyof T]: T[K];
+};
 
-// if T is Product, keyof T is:
-// T => "name" | "price"
-class Store<T> {
-  protected _objects: T[] = [];
+type Optional<T> = {
+  [K in keyof T]?: T[K];
+};
 
-  add(obj: T): void {
-    this._objects.push(obj);
-  }
+type Nullable<T> = {
+  [K in keyof T]: T[K] | null;
+};
 
-  find(property: keyof T, value: unknown): T | undefined {
-    return this._objects.find((obj) => obj[property] === value);
-  }
-}
+let product: ReadOnly<Product> = {
+  name: "Mosh",
+  price: 100,
+};
 
-let store = new Store<Product>();
-
-store.add({ name: "apple", price: 1 });
-
-console.log(store.find("name", "apple"));
-console.log(store.find("price", 1));
-
-// uncomment below to see the typescript error
-// console.log(store.find("nonExistingProperty", 1));
+// we can't reassign a value to price because is a readonly propperty
+// product.price = 5;
