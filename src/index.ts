@@ -1,3 +1,9 @@
+/*
+  the diference between "private" and "protected" access modifiers
+  is that private means only accesible inside the class, and 
+  protected means only accesible inside the class or inherited 
+  classes
+*/
 class Person {
   constructor(public firstName: string, public lastName: string) {}
 
@@ -5,7 +11,7 @@ class Person {
     return this.firstName + " " + this.lastName;
   }
 
-  walk() {
+  protected walk() {
     console.log("Walking");
   }
 }
@@ -16,6 +22,7 @@ class Student extends Person {
   }
 
   takeTest() {
+    this.walk();
     console.log("Taking a test");
   }
 }
