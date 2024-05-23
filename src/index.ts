@@ -20,6 +20,12 @@ class Student extends Person {
   }
 }
 
-let student = new Student(1, "John", "Doe");
+class Teacher extends Person {
+  // here we are overriding the "fullName" method of the Person class
+  override get fullName() {
+    return "Professor " + super.fullName;
+  }
+}
 
-student.walk();
+let teacher = new Teacher("John", "Smith");
+console.log(teacher.fullName);
