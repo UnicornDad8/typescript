@@ -1,54 +1,21 @@
-/*
-  the diference between "private" and "protected" access modifiers
-  is that private means only accesible inside the class, and 
-  protected means only accesible inside the class or inherited 
-  classes
-*/
-class Person {
-  constructor(public firstName: string, public lastName: string) {}
+// Abstract classes and methods
+// if we prefix a class with the "abstract" keyword
+// we are saying we can't create instances of that class
+abstract class Shape {
+  constructor(public color: string) {}
 
-  get fullName() {
-    return this.firstName + " " + this.lastName;
-  }
-
-  protected walk() {
-    console.log("Walking");
-  }
+  // abstract methods can only exist in abstract classes
+  // methods can also be abstract when they lack implementation
+  // so they don't have a body with braces: { }, only the return type
+  abstract render(): void;
 }
 
-class Student extends Person {
-  constructor(public id: number, firstName: string, lastName: string) {
-    super(firstName, lastName);
+class Circle extends Shape {
+  constructor(public radius: number, color: string) {
+    super(color);
   }
 
-  takeTest() {
-    this.walk();
-    console.log("Taking a test");
+  override render(): void {
+    console.log("Rendering a circle");
   }
 }
-
-class Teacher extends Person {
-  // here we are overriding the "fullName" method of the Person class
-  override get fullName() {
-    return "Professor " + super.fullName;
-  }
-}
-
-class Principal extends Person {
-  override get fullName() {
-    return "Principal " + super.fullName;
-  }
-}
-
-printNames([
-  new Student(1, "John", "Smith"),
-  new Teacher("Mosh", "Hamedani"),
-  new Principal("Mary", "Smith"),
-]);
-
-// Polymorphic behavior
-function printNames(people: Person[]) {
-  for (let person of people) console.log(person.fullName);
-}
-
-// classes should be open to extension and closed for modification
