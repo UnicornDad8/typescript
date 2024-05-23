@@ -1,16 +1,37 @@
-// Generic Constraints
-class Person {
-  constructor(public name: string) {}
+// Extending Generic classes
+interface Product {
+  name: string;
+  price: number;
 }
 
-class Customer extends Person {}
+class Store<T> {
+  protected _objects: T[] = [];
 
-// here we extend from Person class
-function echo<T extends Person>(value: T): T {
-  return value;
+  add(obj: T): void {
+    this._objects.push(obj);
+  }
 }
 
-console.log(echo(new Person("Ceci")));
+// Pass on the generic type parameter
+class CompressibleStore<T> extends Store<T> {
+  compress() {}
+}
 
-// here we can use a child from the Person class
-console.log(echo(new Customer("Mosh")));
+// Restricting the generic type parameter
+class SearchableStore<T extends { name: string }> extends Store<T> {
+  find(name: string): T | undefined {
+    return this._objects.find((obj) => obj.name === name);
+  }
+}
+
+// Fix the generic type parameter
+class ProductStore extends Store<Product> {
+  filterByCategory(category: string): Product[] {
+    return [];
+  }
+}
+
+let store = new CompressibleStore<Product>();
+
+// passing, restricting or fixing the generic type
+// according to case scenario
