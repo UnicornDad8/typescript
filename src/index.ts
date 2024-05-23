@@ -1,21 +1,38 @@
-// Abstract classes and methods
-// if we prefix a class with the "abstract" keyword
-// we are saying we can't create instances of that class
-abstract class Shape {
-  constructor(public color: string) {}
+// abstract class Calendar {
+//   constructor(public name: string) {}
 
-  // abstract methods can only exist in abstract classes
-  // methods can also be abstract when they lack implementation
-  // so they don't have a body with braces: { }, only the return type
-  abstract render(): void;
+//   abstract addEvent(): void;
+//   abstract removeEvent(): void;
+// }
+
+interface Calendar {
+  name: string;
+  addEvent(): void;
+  removeEvent(): void;
 }
 
-class Circle extends Shape {
-  constructor(public radius: number, color: string) {
-    super(color);
+// we should use an "interface" instead of an abstract class
+// when we don't have any logic or complex algorithm being implemented
+// an interface is purely for type-checking properties and methods
+// we don't have method implementation, in interfaces we can only
+// have signatures
+
+// we can also inherited an interface
+interface CloudCalendar extends Calendar {
+  sync(): void;
+}
+
+// now we need the implementation
+// when we want a class to inherit an interface
+// we use the keyword "implements" instead of "extends"
+class GoogleCalendar implements Calendar {
+  constructor(public name: string) {}
+
+  addEvent(): void {
+    throw new Error("Method not implemented.");
   }
 
-  override render(): void {
-    console.log("Rendering a circle");
+  removeEvent(): void {
+    throw new Error("Method not implemented.");
   }
 }
