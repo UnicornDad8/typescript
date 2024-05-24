@@ -1,4 +1,4 @@
-// parametarized decorators
+// decorator composition
 type ComponentOptions = {
   selector: string;
 };
@@ -14,6 +14,12 @@ function Component(options: ComponentOptions) {
   };
 }
 
+function Pipe(constructor: Function) {
+  console.log("Pipe decorator called");
+  constructor.prototype.pipe = true;
+}
+
 // this is similar behavior as extending from a based class
 @Component({ selector: "#my-profile" }) // passing object as an argument
+@Pipe
 class ProfileComponent {}
