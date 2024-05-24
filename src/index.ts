@@ -1,39 +1,12 @@
-// Generic Types Exercises
-// Solutions:
-
-// Convert the function below to a generic function:
-
-function echo<T>(arg: T): T {
-  return arg;
+// class decorators
+function Component(constructor: Function) {
+  console.log("Component decorator called");
+  constructor.prototype.uniqueId = Date.now();
+  constructor.prototype.insertInDOM = () => {
+    console.log("Adding component to the DOM");
+  };
 }
 
-// When compiling the following piece of code, we get
-// an error saying ‘Property name does not exist on type T’.
-// How can we solve this problem?
-
-function printName<T extends { name: string }>(obj: T) {
-  console.log(obj.name);
-}
-
-// An Entity should have a unique identifier.
-// The type of identifier, however, is dependent on
-// the use case. In some cases, the ID might be
-// a number, in other cases, it might be a string,
-// GUID, etc. Represent the entity using a generic class.
-
-class Entity<T> {
-  constructor(public id: T) {}
-}
-
-// Given the following interface, what does keyof User return?
-
-interface User {
-  userId: number;
-  username: string;
-}
-
-// if T is User, keyof T is:
-// ---------------------------------------------------------------
-// is a union between "userId" or "username"
-// T => userId | username
-// T => number | string
+// this is similar behavior as extending from a based class
+@Component
+class ProfileComponent {}
