@@ -30,5 +30,5 @@ class User {
 }
 
 let user = new User("1234");
-user.password = "1";
+user.password = "1"; // this password is less than 4 characters
 console.log(user.password);
