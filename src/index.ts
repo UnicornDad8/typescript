@@ -1,18 +1,5 @@
-// Exercises with decorators
+// modules section
+import { Circle } from "./shapes";
 
-// Create a decorator for adding a sauce to Pizza instances:
-
-// @Sauce('pesto')
-// class Pizza {}
-
-// In the above example, all instances of the Pizza class
-// should have a sauce property set to pesto.
-
-function Sauce(sauce: string) {
-  return (constructor: Function) => {
-    constructor.prototype.sauce = sauce;
-  };
-}
-
-@Sauce("Pesto")
-class Pizza {}
+let circle = new Circle(1);
+console.log(circle.radius);
