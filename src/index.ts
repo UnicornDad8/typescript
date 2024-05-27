@@ -1,5 +1,8 @@
 // modules section
-import * as Shapes from "./shapes";
+import { Circle, Square } from "./shapes";
 
-let circle = new Shapes.Circle(1);
-console.log(circle.radius);
+let circle = new Circle(3);
+let square = new Square(10);
+
+console.log(circle);
+console.log(square);
