@@ -1,8 +1,4 @@
-// modules section
-import { Circle, Square } from "./shapes";
+import { calculateTax } from "./tax";
 
-let circle = new Circle(3);
-let square = new Square(10);
-
-console.log(circle);
-console.log(square);
+let tax = calculateTax(1000);
+console.log(tax);
